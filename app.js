@@ -31,6 +31,14 @@ app.set("view engine", 'eja');
 
 //Dynamic Content: EJS allows you to embed JavaScript code in your HTML, which enables you to generate dynamic content based on data passed to the view.
 
+
+app.use(express.static('public'));
+//The line app.use(express.static('public')); in an Express.js application is used to serve static files, such as HTML, CSS, JavaScript, images, and other assets, from a directory on the server. Here’s a breakdown of what’s happening:
+//express.static: This is a built-in middleware function in Express. It serves static files from a specified directory.
+//'public': This is the name of the directory that contains the static files. In this case, the server will look for a directory named public in the root of the project.
+//app.use(...): The use method is how middleware is added to an Express application. By calling app.use(express.static('public'));, you tell Express to serve any static files found in the public folder when users request them.
+
+
 app.get("/",(req,res)=>{
   res.render("index.ejs");
 })
