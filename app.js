@@ -42,11 +42,23 @@ app.use(express.static('public'));
 app.get("/",(req,res)=>{
   res.render("index.ejs");
 })
+//This line of code is part of an Express.js server that handles an HTTP GET request to the root URL (/) and renders an EJS (Embedded JavaScript) template.
 
+//res.render() is a method in Express.js used to render a view template and send the resulting HTML to the client.
+
+//"index.ejs" refers to an EJS template file named index.ejs. The .ejs extension stands for Embedded JavaScript, which is a templating engine that allows you to embed JavaScript logic into HTML.
 app.post("/get-form-data",(req,res)=>{
   console.log(req.body);
   res.send("data received");
 })
+//app.post("/get-form-data", ... ):  =>app.post is a method in Express.js used to define a route that handles HTTP POST requests.
+//"/get-form-data" is the URL path that this route will listen for POST requests on. When the server receives a POST request at /get-form-data, the function provided will be executed.
+//console.log(req.body);:
+
+//req.body contains the data that was sent in the body of the POST request. This is typically used to capture form data or JSON data sent by the client.
+//console.log(req.body) will print the received data to the server's console for debugging or logging purposes.
+//res.send("data received");:  => res.send() is a method in Express.js used to send a response back to the client.
+//"data received" is a string message that the server sends as the response, indicating that the data has been received and processed.
 
 
 
