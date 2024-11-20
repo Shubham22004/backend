@@ -15,11 +15,7 @@ app.get("/",(req,res)=>{
   res.send("home page");
 });
 
-// POST route for handling form data
-app.post("/get-form-data", (req, res) => {
-  console.log(req.body);
-  res.send("Data received");  // Fixed the typo here
-});
+
 
 app.get('/register',(req,res)=>{
   res.render('register.ejs');
@@ -40,6 +36,42 @@ app.post('/register',async (req,res)=>{
   //   email:email,
   //   password:password,
   // })  // res.send(new_user);
+})
+
+
+//READ OPERATION =================================
+app.get('/get-user',(res,req)=>{
+  userModel.find().then((user)=>{
+    res.send(user);
+})
+})
+//find method is used to get all the data from the database and help in displaying the data on webpage also you can give condition in find method to get the data of specific user like find({name:"user1"}) to get the data of user1 and if the user is not present then it return empty array
+
+app.get('/get-user',(res,req)=>{
+  userModel.findOne().then((user)=>{
+    res.send(user);
+})
+});
+// findOne({name:"user1"}) to get the data of one user even if we have multiple user of same name and  if the user is not present then it return null
+
+
+//update user =====================================
+app.get('/update-user',async (req,res)=>{
+  await userModel.findOneAndUpdate({
+    name:'a'
+  },{
+    email:"abc@world.com"
+  })
+  res.send("user update")
+})
+
+//deleting user=====================
+app.get('/delete-user',async (req,res)=>{
+  await userModel.findOneAndDelete
+  ({
+    name:'a'
+  })
+    res.send("user deleted")
 })
 
 // Set the app to listen on port 3000
